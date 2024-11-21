@@ -41,12 +41,11 @@ class RGB_to_HSV(ImageOnlyTransform):
         return hsv_to_rgb(img)
 
 class RandomCropNoResize(DualTransform):
-
     def __init__(self, ratio: float, always_apply: bool = False, p: float = 1.0):
         super().__init__(always_apply, p)
-        '''
+        """
         ratio: ratio applied to scale height and width of crop, randomly chosen from (ratio, 1)
-        '''
+        """
         self.ratio = ratio
 
     def get_params(self):
@@ -60,10 +59,18 @@ class RandomCropNoResize(DualTransform):
         }
 
     def apply(self, img, scale_height=0, scale_width=0, h_start=0, w_start=0, **params):
-        return Fc.random_crop(img, int(scale_height*img.shape[0]), int(scale_width*img.shape[1]), h_start, w_start)
+        """
+        Perform random cropping.
+        """
+        height = int(scale_height * img.shape[0])
+        width = int(scale_width * img.shape[1])
+        h_start = int(h_start * (img.shape[0] - height))
+        w_start = int(w_start * (img.shape[1] - width))
+        return img[h_start:h_start + height, w_start:w_start + width]
 
     def get_transform_init_args_names(self):
-        return "ratio", "height", "width"
+        return "ratio",
+
 
 class LongestMaxSizeIfLarger(LongestMaxSize):
     """
