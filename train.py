@@ -32,7 +32,7 @@ def parse_args():
                         metavar='N', help='Dataloader threads.')
 
 
-    parser.add_argument('--local_rank', type=int, default=0,
+    parser.add_argument('--local-rank', type=int, default=0,
                         metavar='N', help='Dataloader threads.')
 
     parser.add_argument('--batch-size', type=int, default=-1,
