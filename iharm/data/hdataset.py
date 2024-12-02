@@ -87,7 +87,7 @@ class HDatasetUpsample(BaseHDatasetUpsample):
         composite_image_name = self.dataset_samples[index]
         composite_image_name, ext = composite_image_name.rsplit('.',1)
         # print(composite_image_name)
-        real_image_name = composite_image_name[1:-2] + '.' + ext
+        real_image_name = composite_image_name[1:] + '.' + ext
         mask_name = composite_image_name[1:-2] + '.' + ext
         composite_image_name = composite_image_name[1:] + '.' + ext
 
