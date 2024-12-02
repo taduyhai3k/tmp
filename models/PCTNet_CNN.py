@@ -89,7 +89,7 @@ def train(model, cfg, model_cfg, ccfg, start_epoch=0):
             # HDatasetUpsample(cfg.HDAY2NIGHT_PATH, split='train', blur_target=blur),
             # HDatasetUpsample(cfg.HCOCO_PATH, split='train', blur_target=blur),
             # HDatasetUpsample(cfg.HADOBE5K_PATH, split='train', blur_target=blur),
-            HDatasetUpsample(cfg.EyeBags_foregin, split = 'train', blur_target = blur)
+            HDatasetUpsample(cfg.Augmented_data, split = 'train', blur_target = blur)
         ],
         augmentator_1=train_augmentator_1,
         augmentator_2=train_augmentator_2,
@@ -104,7 +104,7 @@ def train(model, cfg, model_cfg, ccfg, start_epoch=0):
             # HDatasetUpsample(cfg.HDAY2NIGHT_PATH, split='test', blur_target=blur, mini_val=False),
             # HDatasetUpsample(cfg.HCOCO_PATH, split='test', blur_target=blur, mini_val=False),
             # HDatasetUpsample(cfg.HADOBE5K_PATH, split='test', blur_target=blur)
-            HDatasetUpsample(cfg.EyeBags_foregin, split = 'test', blur_target = blur, mini_val= False)            
+            HDatasetUpsample(cfg.Augmented_data, split = 'test', blur_target = blur, mini_val= False)            
         ],
         augmentator_1=val_augmentator_1,
         augmentator_2=val_augmentator_2,
