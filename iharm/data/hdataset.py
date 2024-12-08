@@ -85,11 +85,18 @@ class HDatasetUpsample(BaseHDatasetUpsample):
 
     def get_sample(self, index):
         composite_image_name = self.dataset_samples[index]
-        composite_image_name, ext = composite_image_name.rsplit('.',1)
-        # print(composite_image_name)
-        real_image_name = composite_image_name[1:] + '.' + ext
-        mask_name = composite_image_name[1:-3] + '.' + ext
-        composite_image_name = composite_image_name[1:] + '.' + ext
+        if composite_image_name[1:4] == "HAI":
+            composite_image_name, ext = composite_image_name.rsplit('.',1)
+            # print(composite_image_name)
+            real_image_name = composite_image_name[1:] + '.' + ext
+            mask_name = composite_image_name[1:-2] + '.' + ext
+            composite_image_name = composite_image_name[1:] + '.' + ext
+        else:
+            composite_image_name, ext = composite_image_name.rsplit('.',1)
+            # print(composite_image_name)
+            real_image_name = composite_image_name[1:-2] + '.' + ext
+            mask_name = composite_image_name[1:-2] + '.' + ext
+            composite_image_name = composite_image_name[1:] + '.' + ext                
 
         composite_image_path = str(self._composite_images_path / composite_image_name)
         real_image_path = str(self._real_images_path / real_image_name)

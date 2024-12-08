@@ -68,7 +68,7 @@ def train(model, cfg, model_cfg, ccfg, start_epoch=0):
     
     num_epochs = 180
 
-    low_res_size = (112, 112)
+    low_res_size = (224, 224)
 
     train_augmentator_1 = HCompose([
         RandomCropNoResize(ratio=0.7)
